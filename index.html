@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sai Vamsikrishna Isukapalli — Computational Chemist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --bg2: #f0f7f4;
+    --text: #1a1a1a;
+    --text2: #3a3a3a;
+    --text3: #7a7a7a;
+    --accent: #007856;
+    --accent2: #009B77;
+    --border: #c8e6dc;
+    --tag-bg: #d4ede4;
+    --tag-text: #005a3f;
+    --link: #007856;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
+
+  .nav-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text2);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .hero-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+    color: var(--text);
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-bio {
+    font-size: 15px;
+    color: var(--text2);
+    line-height: 1.75;
+    margin-bottom: 1.8rem;
+    max-width: 560px;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--accent2);
+    padding: 5px 14px;
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .hero-link:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .hero-link.primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  .hero-link.primary:hover { background: var(--accent2); border-color: var(--accent2); }
+
+  .avatar-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 3px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  .avatar-initials {
+    font-family: 'EB Garamond', serif;
+    font-size: 3rem;
+    color: var(--text3);
+    font-weight: 400;
+  }
+
+  .affiliation {
+    font-size: 11.5px;
+    color: var(--text3);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* DIVIDER */
+  .divider {
+    max-width: 860px;
+    margin: 0 auto;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* RESEARCH */
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .research-card {
+    padding: 1.4rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    border-left: 3px solid var(--accent2);
+  }
+
+  .research-card h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .research-card p {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  /* PUBLICATIONS */
+  .pub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  .pub-item {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .pub-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text3);
+    padding-top: 3px;
+    text-align: right;
+  }
+
+  .pub-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 0.3rem;
+  }
+
+  .pub-meta {
+    font-size: 12.5px;
+    color: var(--text3);
+    margin-bottom: 0.4rem;
+  }
+
+  .pub-meta em {
+    color: var(--text2);
+    font-style: italic;
+  }
+
+  .pub-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    color: var(--link);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .pub-link:hover { text-decoration: underline; }
+
+  /* PROJECTS */
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .project-item {
+    padding: 1.4rem 1.6rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .project-item:hover { border-color: var(--accent2); }
+
+  .project-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+    margin-bottom: 0.7rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+  }
+
+  .project-link {
+    font-size: 12px;
+    color: var(--link);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    transition: border-color 0.2s;
+    flex-shrink: 0;
+  }
+
+  .project-link:hover { border-color: var(--accent2); }
+
+  /* TOOLS */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .tools-group h4 {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 0.7rem;
+  }
+
+  .tools-group ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .tools-group li {
+    font-family: 'DM Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text2);
+  }
+
+  /* VISITORS */
+  .visitors-section {
+    text-align: center;
+    padding: 2.5rem 2rem;
+  }
+
+  .visitors-section p {
+    font-size: 12px;
+    color: var(--text3);
+    margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.8rem 2rem;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text3);
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  footer a { color: var(--link); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 3rem 1.2rem 2.5rem;
+    }
+    .avatar-box { flex-direction: row; align-items: center; }
+    .avatar { width: 80px; height: 80px; }
+    .hero-title { font-size: 2rem; }
+    nav { padding: 0 1.2rem; }
+    .nav-links { gap: 1.2rem; }
+    section { padding: 2.5rem 1.2rem; }
+  }
+
+  /* FADE IN */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left { animation: fadeUp 0.6s ease both; }
+  .avatar-box { animation: fadeUp 0.6s 0.15s ease both; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-name">Sai Vamsikrishna Isukapalli</a>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#projects">Software</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-subtitle">Postdoctoral Researcher &middot; LMU Munich</p>
+    <h1 class="hero-title">Sai Vamsikrishna<br>Isukapalli</h1>
+    <p class="hero-bio">
+      Computational chemist working at the intersection of ab initio molecular dynamics,
+      quantum chemistry, and machine learning interatomic potentials. Currently at
+      <a href="https://fingerhut.cup.uni-muenchen.de/group/" style="color:var(--link);text-decoration:none;" target="_blank">AK Fingerhut</a>,
+      LMU Munich, studying excess proton transport in liquid water and building
+      DFT-quality datasets for ML potentials using the MACE framework.
+    </p>
+    <div class="hero-links">
+      <a href="https://scholar.google.com/citations?user=5r9j0EwAAAAJ&hl=en" class="hero-link primary" target="_blank">Google Scholar</a>
+      <a href="https://www.linkedin.com/in/sai-vamsikrishna-isukapalli-ph-d-3b5174a3/" class="hero-link" target="_blank">LinkedIn</a>
+      <a href="https://github.com/vamsi-isuk" class="hero-link" target="_blank">GitHub</a>
+      <a href="mailto:V.Isukapalli@lmu.de" class="hero-link">Email</a>
+      <a href="cv.pdf" class="hero-link" download>Download CV</a>
+    </div>
+  </div>
+  <div class="avatar-box">
+    <div class="avatar">
+      <img src="photo.jpg" alt="Sai Vamsikrishna Isukapalli" id="photo">
+      <span class="avatar-initials" id="initials">SI</span>
+    </div>
+    <div class="affiliation">
+      AK Fingerhut<br>
+      Dept. of Chemistry<br>
+      LMU Munich
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-label">Research interests</div>
+  <div class="research-grid">
+    <div class="research-card">
+      <h3>Ab initio Molecular Dynamics</h3>
+      <p>Long-timescale AIMD of protonated liquid water on national HPC systems using CP2K, generating large-scale DFT-quality trajectory data for structural and dynamical analysis.</p>
+    </div>
+    <div class="research-card">
+      <h3>ML Interatomic Potentials</h3>
+      <p>Generation of energy/force datasets for message-passing ML potentials (MACE, PaiNN/SchNetPack). Dataset curation, model validation, and benchmark MD against experiment.</p>
+    </div>
+    <div class="research-card">
+      <h3>Nonadiabatic Quantum Dynamics</h3>
+      <p>Excited-state PES computation and quantum dynamics (MCTDH, SHARC) for organic chromophores. Quantifying intersystem crossing, internal conversion, and time-resolved spectra.</p>
+    </div>
+    <div class="research-card">
+      <h3>Scientific Workflow Engineering</h3>
+      <p>Building modular Python analysis pipelines for multi-GB trajectory data — proton-transfer detection, RDFs, coordination metrics, and reproducible HPC workflows.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-label">Selected publications</div>
+  <div class="pub-list">
+
+    <div class="pub-item">
+      <span class="pub-num">01</span>
+      <div>
+        <div class="pub-title">Quantum chemistry and nonadiabatic dynamics studies on organic chromophores</div>
+        <div class="pub-meta">S. V. Isukapalli et al. &mdash; <em>Doctoral work, IISER Thiruvananthapuram</em> &mdash; 2018–2023</div>
+        <a href="https://scholar.google.com/citations?user=5r9j0EwAAAAJ&hl=en" class="pub-link" target="_blank">→ View on Google Scholar</a>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <span class="pub-num">02</span>
+      <div>
+        <div class="pub-title">AIMD-to-MLIP pipeline for aqueous proton transport</div>
+        <div class="pub-meta">S. V. Isukapalli, B. P. Fingerhut et al. &mdash; <em>In preparation</em> &mdash; LMU Munich, 2024–2025</div>
+        <span style="font-family:'DM Mono',monospace;font-size:11.5px;color:var(--text3);">manuscript in preparation</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p style="font-size:12.5px;color:var(--text3);margin-top:1.5rem;">
+    Full publication list on
+    <a href="https://scholar.google.com/citations?user=5r9j0EwAAAAJ&hl=en" style="color:var(--link);" target="_blank">Google Scholar</a>.
+  </p>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS / SOFTWARE -->
+<section id="projects">
+  <div class="section-label">Software &amp; projects</div>
+  <div class="project-list">
+
+    <div class="project-item">
+      <div>
+        <div class="project-title">auto-eln-logger</div>
+        <div class="project-desc">
+          Automatic Electronic Lab Notebook logger for computational chemistry HPC clusters.
+          Integrates Slurm job submission with eLabFTW by auto-parsing CP2K, Molpro, ORCA,
+          and Amber input/output files. Zero extra effort from researchers — just replace
+          <code style="font-family:'DM Mono',monospace;font-size:12px;background:var(--bg2);padding:1px 5px;border-radius:2px;">sbatch</code>
+          with <code style="font-family:'DM Mono',monospace;font-size:12px;background:var(--bg2);padding:1px 5px;border-radius:2px;">bmdsubmit</code>.
+        </div>
+        <div class="tags">
+          <span class="tag">python</span>
+          <span class="tag">slurm</span>
+          <span class="tag">cp2k</span>
+          <span class="tag">molpro</span>
+          <span class="tag">elabftw</span>
+          <span class="tag">hpc</span>
+        </div>
+      </div>
+      <a href="https://github.com/vamsi-isuk/auto-eln-logger" class="project-link" target="_blank">GitHub →</a>
+    </div>
+
+
+    <div class="project-item">
+      <div>
+        <div class="project-title">kevalzug</div>
+        <div class="project-desc">
+          A chess opening preparation tool that discovers &lsquo;Trojan&rsquo; deviations &mdash;
+          slightly inferior moves that demand rare, precise defence from the opponent.
+          Explains counterintuitive engine moves by identifying upcoming only-move defence
+          points and likely human misses. Interfaces with the Lichess explorer API.
+        </div>
+        <div class="tags">
+          <span class="tag">python</span>
+          <span class="tag">chess</span>
+          <span class="tag">lichess api</span>
+          <span class="tag">stockfish</span>
+          <span class="tag">opening prep</span>
+        </div>
+      </div>
+      <span class="project-link" style="color:var(--text3);border-color:var(--border);cursor:default;">private</span>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <div class="project-title">AIMD trajectory analysis toolkit</div>
+        <div class="project-desc">
+          Modular Python workflows for streaming and analysing multi-GB XYZ trajectory files
+          from AIMD simulations. Extracts proton-sharing coordinates, RDFs, coordination
+          metrics, and proton-transfer events at scale.
+        </div>
+        <div class="tags">
+          <span class="tag">python</span>
+          <span class="tag">aimd</span>
+          <span class="tag">trajectory analysis</span>
+          <span class="tag">excess proton</span>
+        </div>
+      </div>
+      <span class="project-link" style="color:var(--text3);border-color:var(--border);cursor:default;">private</span>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <div class="project-title">MACE training pipeline for aqueous systems</div>
+        <div class="project-desc">
+          End-to-end pipeline for generating, curating, and validating DFT-quality energy/force
+          datasets (497k frames) for MACE message-passing ML interatomic potentials.
+          Includes dataset splitting, loss monitoring, and benchmark validation MD.
+        </div>
+        <div class="tags">
+          <span class="tag">pytorch</span>
+          <span class="tag">mace</span>
+          <span class="tag">mlip</span>
+          <span class="tag">schnetpack</span>
+          <span class="tag">tensorboard</span>
+        </div>
+      </div>
+      <span class="project-link" style="color:var(--text3);border-color:var(--border);cursor:default;">private</span>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TOOLS -->
+<section>
+  <div class="section-label">Tools &amp; methods</div>
+  <div class="tools-grid">
+    <div class="tools-group">
+      <h4>QC &amp; MD codes</h4>
+      <ul>
+        <li>CP2K</li>
+        <li>ORCA</li>
+        <li>MOLPRO</li>
+        <li>Gaussian</li>
+        <li>TURBOMOLE</li>
+        <li>SHARC</li>
+        <li>MCTDH</li>
+      </ul>
+    </div>
+    <div class="tools-group">
+      <h4>ML &amp; data</h4>
+      <ul>
+        <li>MACE</li>
+        <li>SchNetPack / PaiNN</li>
+        <li>PyTorch</li>
+        <li>TensorBoard</li>
+        <li>i-PI (RPMD)</li>
+      </ul>
+    </div>
+    <div class="tools-group">
+      <h4>Programming</h4>
+      <ul>
+        <li>Python</li>
+        <li>Bash</li>
+        <li>MATLAB</li>
+        <li>LaTeX</li>
+      </ul>
+    </div>
+    <div class="tools-group">
+      <h4>Infrastructure</h4>
+      <ul>
+        <li>Slurm / HPC</li>
+        <li>Docker</li>
+        <li>Git / GitHub</li>
+        <li>eLabFTW / NOMAD</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- VISITORS -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <p style="font-size:14px;color:var(--text2);margin-bottom:1.5rem;">
+    Postdoctoral Researcher &mdash; AK Fingerhut, Department of Chemistry, LMU Munich<br>
+    <a href="mailto:V.Isukapalli@lmu.de" style="color:var(--link);">V.Isukapalli@lmu.de</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://www.linkedin.com/in/sai-vamsikrishna-isukapalli-ph-d-3b5174a3/" style="color:var(--link);" target="_blank">LinkedIn</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://github.com/vamsi-isuk" style="color:var(--link);" target="_blank">GitHub</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://scholar.google.com/citations?user=5r9j0EwAAAAJ&hl=en" style="color:var(--link);" target="_blank">Google Scholar</a>
+  </p>
+
+  <div class="visitors-section">
+    <p>Visitors by country</p>
+    <a href="https://info.flagcounter.com/YOUR_FLAG_COUNTER_ID">
+      <img src="https://s11.flagcounter.com/count2/YOUR_FLAG_COUNTER_ID/bg_FAFAF7/txt_4A4A44/border_E0DDD6/columns_6/maxflags_18/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0" style="max-width:100%;">
+    </a>
+    <p style="margin-top:0.8rem;font-size:11px;color:var(--text3);">
+      Replace <code>YOUR_FLAG_COUNTER_ID</code> with your ID from
+      <a href="https://flagcounter.com" style="color:var(--link);" target="_blank">flagcounter.com</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Sai Vamsikrishna Isukapalli &mdash; Munich, Germany
+</footer>
+
+<script>
+  // Show initials placeholder, hide img until it loads
+  const photo = document.getElementById('photo');
+  const initials = document.getElementById('initials');
+  photo.onload = function() {
+    photo.style.display = 'block';
+    initials.style.display = 'none';
+  };
+  photo.onerror = function() {
+    photo.style.display = 'none';
+    initials.style.display = 'block';
+  };
+</script>
+
+</body>
+</html>
